@@ -54,7 +54,7 @@ var snowflakes = [];
 
 var addSnowflake = () => {
   var snowflake = new PIXI.Sprite(
-    PIXI.loader.resources["sprite.png"].texture
+    PIXI.loader.resources["/sprite/primary-snowflake.png"].texture
   );
 
   resetSnowflake(snowflake);
@@ -79,4 +79,4 @@ var begin = () => {
   render();
 };
 
-PIXI.loader.add("sprite.png").load(begin);
+PIXI.loader.add("/sprite/primary-snowflake.png").load(begin);
