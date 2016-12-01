@@ -1,0 +1,4 @@
+# Jekyll Stuff
+vendor/
+.bundle/
+_site/
