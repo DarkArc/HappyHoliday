@@ -1,16 +1,21 @@
 <html>
   <head>
     <title>Happy Holidays!</title>
-    <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Arizonia'>
+    <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.3/milligram.min.css'>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/spa.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.2.2/pixi.min.js"></script>
   </head>
   <body>
     <div id="snow-renderer">
     </div>
-    <div id="text-renderer">
+    <div id="app" class="interface">
+      <router-view></router-view>
     </div>
     <script type="text/javascript" src="js/snow-renderer.js"></script>
-    <script type="text/javascript" src="js/text-renderer.js"></script>
-</body>
+    <script type="text/javascript" src="js/vue-app.js"></script>
+  </body>
 </html>

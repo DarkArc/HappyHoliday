@@ -11,11 +11,32 @@ body {
   height: 100vh;
 }
 
-#text-renderer {
+.framed {
+  background-color: white;
+  opacity: .9;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.interface {
   position: absolute;
-  left: 0px;
-  top: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   z-index: 10;
-  width: 100vw;
-  height: 100vh;
+  max-height: 100vh;
+  overflow: auto;
+}
+
+.interface-element {
+  width: 75%;
+}
+
+.christmas-font {
+  font-family: 'Arizonia';
+  color: white;
+  font-size: 3em;
+  line-height: 1.2em;
+  text-shadow: 5px 5px 8px #000000;
 }
