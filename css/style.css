@@ -43,10 +43,10 @@ body {
 @keyframes holiday-magic {
   0% {
     opacity: 0;
-    color: yellow;
+    color: gold;
   }
   70% {
-    text-shadow: 5px 5px 15px yellow;
+    text-shadow: 5px 5px 15px rgba(255, 215, 0, 0.5);
   }
   90% {
     color: white;
