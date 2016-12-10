@@ -6,9 +6,11 @@ var Compose = Vue.extend({
     <div class="interface-element framed">
       <h1>What would you like to say?</h1>
       <textarea v-model="message"></textarea>
-      <input type="text" readonly v-bind:value="encodeFull(message)" />
-      <router-link to="/" class="button">Copy Link (NIY)</router-link>
-      <router-link v-bind:to="encode(message)" class="button button-outline">View</router-link>
+      <section v-if="message.length > 0">
+        <input id="full-url-display" type="text" readonly v-bind:value="encodeFull()" />
+        <button class="button" v-if="supportsCopy()" v-on:click="copy">Copy Link</button>
+        <router-link v-bind:to="encode()" class="button button-outline">View</router-link>
+      </section>
     </div>
   `,
   data: function() {
@@ -17,11 +19,20 @@ var Compose = Vue.extend({
     };
   },
   methods: {
-    encode: function(string) {
-      return '/view/' + btoa(string);
+    encode: function() {
+      return '/view/' + btoa(this.message);
     },
     encodeFull: function(string) {
-      return 'http://hh.haxing.ninja/view/' + btoa(string);
+      return 'http://hh.haxing.ninja' + this.encode();
+    },
+    supportsCopy: function() {
+      return document.queryCommandSupported('copy');
+    },
+    copy: function() {
+      var fullUrl = document.getElementById('full-url-display');
+      fullUrl.select();
+      var selection = window.getSelection();
+      document.execCommand('copy');
     }
   }
 });
@@ -45,8 +56,9 @@ var TextArea = Vue.extend({
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/', name: 'A', component: Compose },
-    { path: '/view/:encodedText', name: 'B', component: TextArea }
+    { path: '/', component: Compose },
+    { path: '/view/:encodedText', component: TextArea },
+    { path: '*', redirect: '/' }
   ]
 })
 
