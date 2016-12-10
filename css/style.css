@@ -2,3 +2,20 @@ body {
   margin: 0;
   background-color: #87CEEB;
 }
+
+#snow-renderer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#text-renderer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+}
