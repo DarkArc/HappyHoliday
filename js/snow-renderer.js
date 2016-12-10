@@ -15,7 +15,7 @@
     snowflake.counter = 20 * Math.random();
 
     snowflake.position.x = window.innerWidth * Math.random();
-    snowflake.position.y = -200;
+    snowflake.position.y = -100;
 
     var scaleModifier = .05 * Math.random();
     snowflake.scale.x = .025 + scaleModifier;
@@ -35,7 +35,7 @@
         snowflake.rotation -= 0.01;
       }
 
-      if (snowflake.position.y > window.innerHeight) {
+      if (snowflake.position.y - 100 > window.innerHeight) {
         resetSnowflake(snowflake);
       }
     });
