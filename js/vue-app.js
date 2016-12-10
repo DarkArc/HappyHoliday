@@ -41,8 +41,9 @@ var TextArea = Vue.extend({
   delimiters: ['[[', ']]'],
   template: `
     <div class="interface-element christmas-font">
-      <span v-for="line in message.split('\\n')">
-        [[ line ]] <br />
+      <span v-for="line in getLines()">
+        <span v-for="char in getCharacters(line)" class="christmas-character" v-bind:style="getStylesForCharacter(char)">[[ char.value ]]</span>
+        <br />
       </span>
     </div>
   `,
@@ -50,6 +51,31 @@ var TextArea = Vue.extend({
     return {
       message: window.atob(this.$route.params.encodedText)
     };
+  },
+  methods: {
+    getLines: function() {
+      return this.message.split('\n').map((line, index) => {
+        return {
+          value: line,
+          index: index
+        };
+      });
+    },
+    getCharacters: function(line) {
+      return line.value.split('').map((char, index) => {
+        return {
+          value: char,
+          index: index,
+          line: line
+        };
+      });
+    },
+    getStylesForCharacter: function(char) {
+      var offset = (char.index / 2.0) + (char.line.index / 3.0);
+      var tempo = .5 * (char.line.value.length);
+      var delay = offset / tempo;
+      return 'animation-delay: ' + delay + 's';
+    }
   }
 });
 

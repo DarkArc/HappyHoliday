@@ -35,8 +35,33 @@ body {
 
 .christmas-font {
   font-family: 'Arizonia';
-  color: white;
   font-size: 3em;
   line-height: 1.2em;
-  text-shadow: 5px 5px 8px #000000;
+  padding: 20px;
+}
+
+@keyframes holiday-magic {
+  0% {
+    opacity: 0;
+    color: yellow;
+  }
+  70% {
+    text-shadow: 5px 5px 15px yellow;
+  }
+  90% {
+    color: white;
+  }
+  100% {
+    opacity: 1;
+    color: white;
+    text-shadow: 5px 5px 15px rgba(255, 255, 255, 0.5);
+  }
+}
+
+.christmas-character {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-duration: .5s;
+  animation-timing-function: ease-in;
+  animation-name: holiday-magic;
 }
